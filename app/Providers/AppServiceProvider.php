@@ -24,5 +24,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->bind(
+            'App\Services\Fibonacci\IFibonacci',
+            'App\Services\Fibonacci\Fibonacci'
+        );
     }
 }
