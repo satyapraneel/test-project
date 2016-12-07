@@ -3,8 +3,9 @@
     <th>Rank</th>
     <th>|Name</th>
 <?php
-    if(!empty($sortedResults['subject'][0])):
-        foreach($sortedResults['subject'][0] as $subjects):
+    $subjectToPick = (array_keys($sortedResults['maxNumberOfSubjects'], max($sortedResults['maxNumberOfSubjects'])));
+    if(!empty($sortedResults['subject'][$subjectToPick[0]])):
+        foreach($sortedResults['subject'][$subjectToPick[0]] as $subjects):
             echo "<th>|$subjects</th>";
         endforeach;
     endif;
@@ -18,9 +19,11 @@
                     echo '<td>'.$sortedResults['name'][$sortedResult].'</td>';
                 }
                 if(isset($sortedResults['subject'][$sortedResult])):
-                    foreach($sortedResults['subject'][$sortedResult] as $subjectIndex => $subjects):
+                    foreach($sortedResults['subject'][$subjectToPick[0]] as $subjectIndex => $subjects):
                        if(isset($sortedResults['marks'][$sortedResult][$subjectIndex])):
                            echo "<td>".$sortedResults['marks'][$sortedResult][$subjectIndex]."</td>";
+                       else:
+                           echo "<td>0</td>";
                        endif;
                     endforeach;
                 endif;

@@ -21,6 +21,7 @@ class QuickSort implements IQuickSort{
                 $total += $marks;
             }
             $allTotals[$key] = $total;
+            $studentDetails['maxNumberOfSubjects'][] = count($studentDetails['subject'][$key]);
             $studentDetails['index'][$total] = $key;
             $studentDetails['total'][$key] = $total;
         }
@@ -45,7 +46,7 @@ class QuickSort implements IQuickSort{
         $pivot_key  = key( $totalMarks );
         $pivot  = array_shift( $totalMarks );
         foreach( $totalMarks as $k => $v ) {
-            if( $v < $pivot )
+            if( $v > $pivot )
                 $left[$k] = $v;
             else
                 $right[$k] = $v;
