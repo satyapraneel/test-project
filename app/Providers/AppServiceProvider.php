@@ -28,5 +28,10 @@ class AppServiceProvider extends ServiceProvider
             'App\Services\Fibonacci\IFibonacci',
             'App\Services\Fibonacci\Fibonacci'
         );
+
+        $this->app->bind(
+            'App\Services\QuickSort\IQuickSort',
+            'App\Services\QuickSort\QuickSort'
+        );
     }
 }
