@@ -2,7 +2,7 @@
 @section('content')
     <div class="jumbotron text-center">
         <h1>Fibonacci </h1>
-        <form action="{{url('/getFibonacci')}}" method="get" id="fibonacciForm">
+        <form action="{{url('/getFibonacciSeries')}}" method="get" id="fibonacciForm">
             <div class="row">
                 <div class="col-sm-4 col-sm-offset-4">
                     <div class="form-group">

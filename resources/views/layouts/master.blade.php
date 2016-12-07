@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Fibonacci</title>
+    @yield('title')
     @include('layouts.header-scripts')
 </head>
 <body>
