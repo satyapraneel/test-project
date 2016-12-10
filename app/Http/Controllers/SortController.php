@@ -13,6 +13,7 @@ class SortController extends Controller
     }
 
     public function getResultForStudent(Request $request,ISortService $sortService){
-		return $sortService->getSortedResult($request->all());
+        $studentDetails = $sortService->getSortedResult($request->all());
+        return view('sort.sorted-result')->with('studentDetails',$studentDetails);
     }
 }

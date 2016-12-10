@@ -27,20 +27,25 @@ class SortService implements ISortService{
 			$this->algorithmToSort = $this->sortFactory->getSortType($studentDetails['algorithmToSort']);
 			if($this->algorithmToSort){
                 $sortField = [];
+                $indexOfStudentBeforeSort = [];
                 foreach($studentDetails['name'] as $studentIndex => $studentDetail){
                     $totalMarks = 0;
                     foreach($subjects as $subject){
                         $totalMarks += $studentDetails['marks'][$studentIndex][$subject];
-                        if($studentDetails['sortField'] == $subject)
-                        $sortField[$subject][] = $studentDetails['marks'][$studentIndex][$subject];
+                        if($studentDetails['sortField'] == $subject) {
+                            $sortField[$subject][] = $studentDetails['marks'][$studentIndex][$subject];
+                            $indexOfStudentBeforeSort[$studentDetails['marks'][$studentIndex][$subject]]  = $studentIndex;
+                        }
                     }
                     if($studentDetails['sortField'] == 'total') {
                         $studentDetails[$studentIndex]['total'] = $totalMarks;
                         $sortField['total'][] = $totalMarks;
+                        $indexOfStudentBeforeSort[$totalMarks] = $studentIndex;
                     }
                 }
-				$sortResult = $this->algorithmToSort->getSortedResult($sortField[$studentDetails['sortField']],$studentDetails['sortOrder']);
-
+                $studentDetails['indexOfStudent'] = $indexOfStudentBeforeSort;
+				$studentDetails['sortResult'] = $this->algorithmToSort->getSortedResult($sortField[$studentDetails['sortField']],$studentDetails['sortOrder']);
+                return $studentDetails;
             }
 		}
         return null;
