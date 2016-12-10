@@ -14,11 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/Fibonacci', 'FibonacciController@index');
-Route::get('/getFibonacciSeries', 'FibonacciController@showFibonacciSeries');
-Route::get('/QuickSort', 'QuickSortController@index');
-Route::post('/getSortedResult', 'QuickSortController@showSortedMarks');
-
 
 /** round 2 questions route */
 
