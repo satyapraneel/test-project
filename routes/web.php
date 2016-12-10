@@ -18,3 +18,13 @@ Route::get('/Fibonacci', 'FibonacciController@index');
 Route::get('/getFibonacciSeries', 'FibonacciController@showFibonacciSeries');
 Route::get('/QuickSort', 'QuickSortController@index');
 Route::post('/getSortedResult', 'QuickSortController@showSortedMarks');
+
+
+/** round 2 questions route */
+
+Route::get('/sortUsingFactoryPattern', 'SortController@index');
+Route::post('/getResultForStudent', 'SortController@getResultForStudent');
+Route::get('/student', 'StudentController@index');
+Route::get('/subject', 'SubjectController@index');
+Route::post('/addSubject', 'SubjectController@store');
+

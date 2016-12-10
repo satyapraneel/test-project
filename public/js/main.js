@@ -1,4 +1,5 @@
 (function ($) {
     Fibonacci.init();
-    QuickSort.init();
+    Subjects.init();
+    Students.init();
 })(jQuery);

@@ -7,47 +7,31 @@
 
 namespace App\Services\QuickSort;
 
+use App\Services\Sort\ISort;
 
-class QuickSort implements IQuickSort{
 
-    public function getSortedResult($studentDetails)
-    {
-        //find the total for all the totals
-        $allTotals = [];
-        $sortedStudentDataIndex = [];
-        foreach($studentDetails['name'] as $key => $studentDetail){
-            $total = 0;
-            foreach($studentDetails['marks'][$key] as $marks){
-                $total += $marks;
-            }
-            $allTotals[$key] = $total;
-            $studentDetails['maxNumberOfSubjects'][] = count($studentDetails['subject'][$key]);
-            $studentDetails['index'][$total] = $key;
-            $studentDetails['total'][$key] = $total;
+class QuickSort implements ISort{
+
+    public function getSortedResult($data,$sortOrder){
+        $data = $this->quickSort($data);
+        if($sortOrder == 'descending'){
+            return array_reverse($data);
         }
-
-        //sort
-        $allSortedTotals = $this->quickSort($allTotals);
-        foreach($allSortedTotals as $sortedTotal){
-            if(isset($studentDetails['index'][$sortedTotal])){
-                $sortedStudentDataIndex[] = $studentDetails['index'][$sortedTotal];
-            }
-        }
-        $studentDetails['sortedIndex'] = $sortedStudentDataIndex;
-        return $studentDetails;
+        return $data;
     }
 
-    private function quickSort( $totalMarks ) {
-        if( count( $totalMarks ) < 2 ) {
-            return $totalMarks;
+    private function quickSort( $data) {
+        if( count( $data ) < 2 ) {
+            return $data;
         }
         $left = $right = [];
-        reset( $totalMarks );
-        $pivot_key  = key( $totalMarks );
-        $pivot  = array_shift( $totalMarks );
-        foreach( $totalMarks as $k => $v ) {
-            if( $v > $pivot )
-                $left[$k] = $v;
+        reset( $data );
+        $pivot_key  = key( $data );
+        $pivot  = array_shift( $data );
+        foreach( $data as $k => $v ) {
+            if($v < $pivot) {
+                    $left[$k] = $v;
+            }
             else
                 $right[$k] = $v;
         }

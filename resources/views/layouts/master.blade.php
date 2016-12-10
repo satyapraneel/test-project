@@ -5,6 +5,7 @@
     @include('layouts.header-scripts')
 </head>
 <body>
+    @include('layouts.header')
     @yield('content')
     @include('layouts.footer-scripts')
 </body>
