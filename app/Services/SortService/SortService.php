@@ -38,10 +38,10 @@ class SortService implements ISortService{
                         }
                     }
                     if($studentDetails['sortField'] == 'total') {
-                        $studentDetails[$studentIndex]['total'] = $totalMarks;
                         $sortField['total'][] = $totalMarks;
                         $indexOfStudentBeforeSort[$totalMarks] = $studentIndex;
                     }
+                    $studentDetails['total'][$studentIndex] = $totalMarks;
                 }
                 $studentDetails['indexOfStudent'] = $indexOfStudentBeforeSort;
 				$studentDetails['sortResult'] = $this->algorithmToSort->getSortedResult($sortField[$studentDetails['sortField']],$studentDetails['sortOrder']);

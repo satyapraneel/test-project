@@ -16,7 +16,7 @@ if(!empty($studentDetails) && session('subjects')):
                 foreach($subjects as $subject):
                     echo '<td>'.$studentDetails['marks'][$indexOfStudent][$subject].'</td>';
                 endforeach;
-                echo "<td>$sortedResult</td>";
+                echo "<td>".$studentDetails['total'][$indexOfStudent]."</td>";
             endif;
             echo "</tr>";
     endforeach;
