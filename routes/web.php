@@ -22,4 +22,6 @@ Route::post('/getResultForStudent', 'SortController@getResultForStudent');
 Route::get('/student', 'StudentController@index');
 Route::get('/subject', 'SubjectController@index');
 Route::post('/addSubject', 'SubjectController@store');
+Route::get('/fibonacci', 'FibonacciController@index');
+Route::get('/getFibonacciSeries', 'FibonacciController@showFibonacciSeries');
 
